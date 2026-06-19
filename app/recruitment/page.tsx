@@ -140,7 +140,7 @@ function OverlayCard({
 }) {
   return (
     <div className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50">
-      <div className="relative aspect-[2/1] w-full">
+      <div className="relative h-[260px] md:h-[220px] w-full">
         <Image
           src={imageSrc}
           alt={title}
@@ -318,7 +318,10 @@ export default function RecruitmentPage() {
       {/* =========================================================
           AI SECTION (center heading + full-width chat placeholder)
       ========================================================= */}
-      <section className="relative -mx-6 overflow-hidden md:-mx-0 md:rounded-3xl">
+      <section
+  id="assistant-section"
+  className="relative -mx-6 overflow-hidden md:-mx-0 md:rounded-3xl"
+>
         <div className="absolute inset-0">
           <Image
             src={IMAGES.bgAi}
@@ -359,17 +362,23 @@ export default function RecruitmentPage() {
             </div>
 
             <div className="mt-5 rounded-2xl border border-white/15 bg-black/20 p-8">
-              <div className="text-center text-sm text-white/80">
-                Chat widget placeholder
-              </div>
-              <div className="mt-3 text-center text-xs text-white/60">
-                (We’ll connect your custom GPT here later.)
-              </div>
+              <div className="text-center text-lg font-semibold text-white">
+  AI Recruitment Assistant Coming Soon
+</div>
+
+<div className="mt-3 text-center text-sm text-white/80">
+  We are currently training our recruitment assistant and testing live job data integration.
+</div>
+
+<div className="mt-2 text-center text-sm text-white/80">
+  This feature will be available shortly.
+</div>
             </div>
 
             <div className="mt-5 rounded-2xl border border-white/15 bg-white/10 p-4 text-sm text-white/85">
-              <span className="font-semibold text-white">Suggested first message:</span>{" "}
-              “Hi, I’m in <span className="underline">[your city/postcode]</span>. What roles are available and what documents do I need?”
+              <span className="font-semibold text-white">
+  Suggested first message:
+</span>{" "}
             </div>
           </div>
         </div>
@@ -459,7 +468,7 @@ export default function RecruitmentPage() {
           </p>
 
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href="#ai" className="btn btn-primary">
+            <a href="#assistant-section" className="btn btn-primary">
               Ask the Assistant
             </a>
             <a

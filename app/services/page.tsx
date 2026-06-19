@@ -1,33 +1,26 @@
 // app/services/page.tsx
 import Image from "next/image";
-import Link from "next/link";
 
 /**
- * ✅ IMAGE PLACEHOLDERS (swap anytime)
- * Put your images in /public/services/ and update paths here:
+ * ✅ IMAGE PLACEHOLDERS
  */
 const IMAGES = {
-  hero: "/services/services-hero.jpg", // depot/dispatch scene
-  approach: "/services/approach.jpg", // team coordination at depot
-  deliverBanner: "/services/services-deliver.jpg", // multiple vans leaving depot
-  trust: "/services/services-trust.jpg", // manager supervising drivers (no handshake)
-  sustainability: "/services/sustainability.jpg", // EV charging / modern delivery
+  hero: "/services/services-hero.jpg",
+  approach: "/services/approach.jpg",
+  deliverBanner: "/services/services-deliver.jpg",
+  trust: "/services/services-trust.jpg",
+  sustainability: "/services/sustainability.jpg",
 };
 
 /**
- * ✅ ICON IMAGES (JPG) — put these inside: /public/services/
- * IMPORTANT:
- * These filenames MUST match your real files exactly (including hyphens).
- * If your names are different, rename your files to match these.
+ * ✅ ICON IMAGES
  */
 const ICONS = {
-  // Section 4 (4 icons)
   leadership: "/icons/capabilities/icon-leadership.jpg",
   onboarding: "/icons/capabilities/icon-onboarding.jpg",
   fleet: "/icons/capabilities/icon-fleet.jpg",
   depot: "/icons/capabilities/icon-depot.jpg",
 
-  // Section 6 (6 icons)
   step1: "/icons/process/icon-step-1.jpg",
   step2: "/icons/process/icon-step-2.jpg",
   step3: "/icons/process/icon-step-3.jpg",
@@ -36,9 +29,6 @@ const ICONS = {
   step6: "/icons/process/icon-step-6.jpg",
 };
 
-/**
- * Image icon box (replaces emoji icons)
- */
 function IconImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white">
@@ -87,10 +77,10 @@ export default function ServicesPage() {
   return (
     <div className="space-y-14">
       {/* =========================================================
-          SECTION 1 — HERO (Full width)
+          SECTION 1 — HERO
       ========================================================= */}
       <section className="relative -mx-6 overflow-hidden rounded-3xl border border-slate-200 md:-mx-0">
-        <div className="relative h-[360px] w-full md:h-[460px]">
+        <div className="relative h-[560px] w-full sm:h-[500px] md:h-[460px]">
           <Image
             src={IMAGES.hero}
             alt="FDL PARCEL NETWORK depot and dispatch operations"
@@ -98,29 +88,31 @@ export default function ServicesPage() {
             priority
             className="object-cover"
           />
-          {/* dark overlay 40–50% */}
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/65 md:bg-black/55" />
         </div>
 
         <div className="absolute inset-0 flex items-center">
           <div className="w-full px-6">
             <div className="mx-auto max-w-6xl">
               <div className="max-w-3xl">
-                <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
+                <h1 className="text-[2rem] font-black leading-[1.08] tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl">
                   A Complete Last-Mile Delivery Partner for Modern Logistics
                 </h1>
 
-                <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
+                <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-white drop-shadow-sm md:text-lg">
                   FDL PARCEL NETWORK provides fully managed last-mile delivery solutions for major carriers across the UK.
                   We combine experienced operational leadership, in-house recruitment and onboarding, fleet coordination,
                   and on-site management to deliver reliable performance aligned with each partner’s systems, procedures,
                   and operational goals.
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a href="mailto:sev@fdlparcel.co.uk" className="btn btn-primary">
-                    Contact Our Team
-                  </a>
+                <div className="mt-7">
+                  <a
+  href="/about#contact-form"
+  className="btn btn-primary w-full sm:w-auto"
+>
+  Contact Our Team
+</a>
                 </div>
               </div>
             </div>
@@ -129,7 +121,7 @@ export default function ServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 2 — OUR APPROACH (Two columns)
+          SECTION 2 — OUR APPROACH
       ========================================================= */}
       <section className="mx-auto max-w-6xl px-6 md:px-0">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
@@ -165,11 +157,10 @@ export default function ServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 3 — WHAT WE DELIVER (Full width)
+          SECTION 3 — WHAT WE DELIVER
       ========================================================= */}
       <section className="-mx-6 bg-slate-50 py-12 md:-mx-0 md:rounded-3xl">
         <div className="mx-auto max-w-6xl px-6">
-          {/* Optional banner image */}
           <div className="mb-8 overflow-hidden rounded-3xl border border-slate-200">
             <div className="relative h-[200px] md:h-[280px]">
               <Image src={IMAGES.deliverBanner} alt="Dispatch wave leaving the depot" fill className="object-cover" />
@@ -199,7 +190,7 @@ export default function ServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 4 — OPERATIONAL CAPABILITIES (4 cards)
+          SECTION 4 — OPERATIONAL CAPABILITIES
       ========================================================= */}
       <section className="mx-auto max-w-6xl px-6 md:px-0">
         <h2 className="text-3xl font-extrabold tracking-tight text-black">
@@ -224,18 +215,16 @@ export default function ServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 5 — WHY PARTNERS CHOOSE US (Two columns)
+          SECTION 5 — WHY PARTNERS CHOOSE US
       ========================================================= */}
       <section className="mx-auto max-w-6xl px-6 md:px-0">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
-          {/* Image left */}
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-3">
             <div className="relative h-[260px] overflow-hidden rounded-2xl md:h-[340px]">
               <Image src={IMAGES.trust} alt="On-site depot supervision" fill className="object-cover" />
             </div>
           </div>
 
-          {/* Text right */}
           <div className="space-y-4">
             <h2 className="text-3xl font-extrabold tracking-tight text-black">
               Built for Reliability and Adaptability
@@ -261,7 +250,7 @@ export default function ServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 6 — HOW WE WORK (Timeline)
+          SECTION 6 — HOW WE WORK
       ========================================================= */}
       <section className="-mx-6 bg-white py-4 md:-mx-0">
         <div className="mx-auto max-w-6xl px-6 md:px-0">
@@ -269,7 +258,6 @@ export default function ServicesPage() {
             A Structured Path to Operational Success
           </h2>
 
-          {/* Desktop / Tablet: clean 2-row flow that suggests progression */}
           <div className="mt-8 hidden md:block">
             <div className="grid gap-5 md:grid-cols-3">
               {steps.slice(0, 3).map((s, i) => (
@@ -298,7 +286,6 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* Mobile: vertical timeline */}
           <div className="mt-8 md:hidden">
             <div className="relative space-y-5">
               <div className="absolute left-5 top-2 bottom-2 w-px bg-slate-200" />
@@ -322,25 +309,25 @@ export default function ServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 7 — SUSTAINABILITY & MODERN FLEETS (Full width)
+          SECTION 7 — SUSTAINABILITY
       ========================================================= */}
       <section className="relative -mx-6 overflow-hidden rounded-3xl border border-slate-200 md:-mx-0">
-        <div className="relative h-[320px] w-full md:h-[380px]">
+        <div className="relative h-[420px] w-full md:h-[380px]">
           <Image src={IMAGES.sustainability} alt="Electric fleet and sustainable delivery" fill className="object-cover" />
-          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-black/60 md:bg-black/50" />
         </div>
 
         <div className="absolute inset-0 flex items-center">
           <div className="mx-auto w-full max-w-6xl px-6">
             <div className="max-w-3xl">
-              <h2 className="text-3xl font-extrabold tracking-tight text-white">
+              <h2 className="text-[1.9rem] font-black leading-tight tracking-tight text-white drop-shadow-md md:text-4xl">
                 Supporting Responsible Delivery
               </h2>
-              <p className="mt-4 text-white/90">
+              <p className="mt-5 text-base font-semibold leading-relaxed text-white drop-shadow-sm md:text-lg">
                 FDL PARCEL NETWORK operates with both traditional fuel vehicles and fully electric fleets,
                 supporting partners working towards reduced emissions and sustainable delivery models.
               </p>
-              <p className="mt-3 text-white/90">
+              <p className="mt-4 text-base font-semibold leading-relaxed text-white drop-shadow-sm md:text-lg">
                 We continuously adapt operations to meet evolving industry standards while maintaining efficiency and reliability.
               </p>
             </div>
@@ -349,7 +336,7 @@ export default function ServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 8 — FINAL CTA (Simple centred)
+          SECTION 8 — FINAL CTA
       ========================================================= */}
       <section className="mx-auto max-w-6xl px-6 pb-2 md:px-0">
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center">
@@ -362,7 +349,7 @@ export default function ServicesPage() {
           </p>
 
           <div className="mt-6 flex justify-center">
-            <a href="mailto:sev@fdlparcel.co.uk" className="btn btn-primary">
+            <a href="/about#contact-form" className="btn btn-primary">
               Contact Our Team
             </a>
           </div>

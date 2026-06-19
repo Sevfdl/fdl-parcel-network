@@ -78,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     {/* SIGNATURE */}
     <div className="mt-4 text-xs font-semibold text-white">
-      Built by <span className="font-extrabold">Sev</span> — first website in my portfolio.
+      Built by <span className="font-extrabold">Sev</span>
     </div>
   </div>
 </footer>

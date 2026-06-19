@@ -208,7 +208,7 @@ export default function AboutPage() {
       {/* =========================================================
           CONTACT FORM (visual only for now)
       ========================================================= */}
-      <section className="mx-auto max-w-6xl px-6 pb-12 md:px-0">
+      <section id="contact-form" className="mx-auto max-w-6xl px-6 pb-12 md:px-0">
         <div className="relative overflow-hidden rounded-3xl border border-slate-200">
           {/* Background image */}
           <div className="absolute inset-0">
