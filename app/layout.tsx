@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,7 +62,24 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}>
+  <head>
+    <Script
+      src="https://www.googletagmanager.com/gtag/js?id=G-8EN1J99BEZ"
+      strategy="afterInteractive"
+    />
+
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8EN1J99BEZ');
+      `}
+    </Script>
+  </head>
+
+  <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}>
         {/* Top Nav */}
         <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
