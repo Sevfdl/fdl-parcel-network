@@ -1,5 +1,8 @@
+"use client";
+
 // app/about/page.tsx
 import Image from "next/image";
+import { FormEvent, useState } from "react";
 
 const IMAGES = {
   heroPerson: "/about/about-hero-person.png",
@@ -45,6 +48,37 @@ const values = [
 ];
 
 export default function AboutPage() {
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setFormStatus("sending");
+
+    try {
+      const response = await fetch("https://formspree.io/f/mojzgeqq", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        form.reset();
+        setFormStatus("success");
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  }
   return (
     <div className="space-y-14">
       {/* =========================================================
@@ -205,12 +239,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          CONTACT FORM (visual only for now)
+            {/* =========================================================
+          CONTACT FORM
       ========================================================= */}
       <section id="contact-form" className="mx-auto max-w-6xl px-6 pb-12 md:px-0">
         <div className="relative overflow-hidden rounded-3xl border border-slate-200">
-          {/* Background image */}
           <div className="absolute inset-0">
             <Image
               src={IMAGES.contactBg}
@@ -222,7 +255,6 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/50" />
           </div>
 
-          {/* Content */}
           <div className="relative p-8 md:p-12">
             <div className="text-center">
               <h2 className="text-3xl font-extrabold text-white md:text-4xl">
@@ -234,48 +266,75 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <form className="mx-auto mt-10 max-w-3xl rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur md:p-8">
+            <form
+  onSubmit={handleSubmit}
+  className="mx-auto mt-10 max-w-3xl rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur md:p-8"
+>
               <div className="grid gap-4 md:grid-cols-2">
                 <input
                   type="text"
+                  name="name"
+                  required
                   placeholder="Full name"
                   className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none"
                 />
 
                 <input
                   type="text"
+                  name="company"
                   placeholder="Company"
                   className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none"
                 />
 
                 <input
                   type="email"
+                  name="email"
+                  required
                   placeholder="Email address"
                   className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none"
                 />
 
                 <input
                   type="tel"
-                  placeholder="Phone (optional)"
+                  name="phone"
+                  placeholder="Phone"
                   className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none"
                 />
               </div>
 
               <textarea
                 rows={6}
+                name="message"
+                required
                 placeholder="Your message..."
                 className="mt-4 w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none"
               />
 
               <div className="mt-6 text-center">
-                <button type="button" className="btn btn-primary">
-                  Send message
-                </button>
+                <button
+  type="submit"
+  disabled={formStatus === "sending"}
+  className="btn btn-primary w-full"
+>
+  {formStatus === "sending" ? "Sending..." : "Send Message"}
+</button>
               </div>
-            </form>
+
+{formStatus === "success" && (
+  <p className="mt-4 rounded-2xl border border-emerald-300 bg-emerald-500/20 px-4 py-3 text-center text-sm font-semibold text-white">
+    Message sent successfully. Thank you — our team will come back to you as soon as possible.
+  </p>
+)}
+
+{formStatus === "error" && (
+  <p className="mt-4 rounded-2xl border border-red-300 bg-red-500/20 px-4 py-3 text-center text-sm font-semibold text-white">
+    Something went wrong. Please try again.
+  </p>
+)}
+</form>
           </div>
         </div>
       </section>
-    </div>
+          </div>
   );
 }

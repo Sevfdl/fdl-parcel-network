@@ -15,8 +15,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FDL Parcel Network",
-  description: "Last-mile delivery operations, built and stabilised fast.",
+  metadataBase: new URL("https://fdlparcel.com"),
+
+  title: "FDL Parcel Network | Last-Mile Logistics & Driver Recruitment UK",
+  description:
+    "FDL Parcel Network provides last-mile logistics support, driver recruitment, onboarding, fleet coordination and operational management across the UK.",
+
+  openGraph: {
+    title: "FDL Parcel Network | Last-Mile Logistics & Driver Recruitment UK",
+    description:
+      "FDL Parcel Network provides last-mile logistics support, driver recruitment, onboarding, fleet coordination and operational management across the UK.",
+    url: "https://fdlparcel.com",
+    siteName: "FDL Parcel Network",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "FDL Parcel Network last-mile logistics and driver recruitment",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "FDL Parcel Network | Last-Mile Logistics & Driver Recruitment UK",
+    description:
+      "FDL Parcel Network provides last-mile logistics support, driver recruitment, onboarding, fleet coordination and operational management across the UK.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
