@@ -379,6 +379,7 @@ export default function RecruitmentPage() {
               <span className="font-semibold text-white">
   Suggested first message:
 </span>{" "}
+“Hi, I am interested in delivery driver work and I am based in [city/postcode].”
             </div>
           </div>
         </div>
