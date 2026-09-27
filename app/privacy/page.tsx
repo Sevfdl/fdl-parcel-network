@@ -16,9 +16,7 @@ export default function PrivacyPage() {
           This policy explains how FDL PARCEL NETWORK handles personal information
           when you use our website, contact us, or apply for work.
         </p>
-        <p className="mt-2 text-sm text-slate-600">
-          Last updated: {new Date().toLocaleDateString("en-GB")}
-        </p>
+        <p className="mt-2 text-sm text-slate-600">Last updated: 27 September 2026</p>
       </section>
 
       {/* CONTENT */}

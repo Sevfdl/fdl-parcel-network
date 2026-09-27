@@ -187,7 +187,7 @@ export default function Home() {
                 className="flex items-center justify-center"
                 style={{ minWidth: 120 }}
               >
-                <img src={p.src} alt={p.name} className="h-8 w-auto opacity-90" />
+                <Image src={p.src} alt={p.name} width={120} height={32} className="h-8 w-auto opacity-90" />
               </div>
             ))}
           </div>
@@ -213,10 +213,12 @@ export default function Home() {
             >
               <div className="w-full shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 md:h-34 md:w-34">
                 <div className="relative aspect-[4/3] w-full md:h-full md:aspect-auto">
-                  <img
+                  <Image
                     src={feature.image}
                     alt={feature.alt}
-                    className="h-full w-full object-cover"
+                    fill
+                    sizes="(min-width: 768px) 136px, 100vw"
+                    className="object-cover"
                   />
                 </div>
               </div>

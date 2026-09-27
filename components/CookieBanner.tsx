@@ -8,12 +8,14 @@ export default function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem("fdl_cookie_consent");
     if (!consent) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is client-only, must read after mount
       setVisible(true);
     }
   }, []);
 
   const acceptCookies = () => {
     localStorage.setItem("fdl_cookie_consent", "accepted");
+    window.dispatchEvent(new Event("fdl-consent-changed"));
     setVisible(false);
   };
 
