@@ -40,52 +40,71 @@ const features = [
 
 const testimonials = [
   {
+    name: "Michael C.",
+    rating: 5,
     title: "Happy with my fixed route",
     text:
       "Best thing about working with FDL Parcel is having the same route every day. Customers know me and I know them. Of course there are small day-to-day problems, but my depot manager always helps. Recommend!",
   },
   {
+    name: "Ionut D.",
+    rating: 5,
     title: "Driving job that’s worth it",
     text:
       "I am a driver at the Southampton depot. Happy with the early wave time and 7-day operation because I can choose which 5 or 6 days to work. Our depot manager is a superstar. I had an issue with the van and he sorted it with the fleet team very quickly.",
   },
   {
+    name: "Georgi S.",
+    rating: 5,
     title: "Great team, more than just money",
     text:
       "From application to recruitment, documents, onboarding, and first day on the road — everything happened very fast. The team is great. After a few weeks learning my route, now I don’t feel like I work — I enjoy it.",
   },
   {
+    name: "Catalin A.",
+    rating: 4,
     title: "Clear onboarding, no confusion",
     text:
       "The document rules were simple and clear. I uploaded everything once and got approved quickly. No back-and-forth messages and no wasted time.",
   },
   {
+    name: "Bavandeep S.",
+    rating: 5,
     title: "Support actually replies",
     text:
       "Whenever I have a question, someone answers. Even when the depot is busy, they still come back to me and help. That matters in this job.",
   },
   {
+    name: "Samir S.",
+    rating: 4,
     title: "Good start time in winter",
     text:
       "The early start makes a big difference in winter. You’re not finishing in the dark every day. The route size is manageable once you learn it.",
   },
   {
+    name: "Craig S.",
+    rating: 5,
     title: "Van rental was simple",
     text:
       "I didn’t have my own van. They explained the rental clearly and it was ready when I started. Easy process and no stress at the beginning.",
   },
   {
+    name: "Leah T.",
+    rating: 5,
     title: "Feels organised",
     text:
       "Compared to other delivery jobs I tried, this feels organised. You know what’s expected, you get the right info, and you can focus on delivering.",
   },
 ];
 
-function Stars() {
+function Stars({ rating }: { rating: number }) {
   return (
     <div className="flex gap-1 text-xs">
-      <span aria-hidden className="text-emerald-600">★★★★★</span>
-      <span className="sr-only">5 star rating</span>
+      <span aria-hidden className="text-emerald-600">
+        {"★".repeat(rating)}
+        <span className="text-slate-300">{"★".repeat(5 - rating)}</span>
+      </span>
+      <span className="sr-only">{rating} star rating</span>
     </div>
   );
 }
@@ -114,9 +133,10 @@ function TestimonialsCarousel() {
             key={t.title}
             className="rounded-2xl border border-slate-200 bg-[#fff7e3] p-5 transition-transform duration-200 hover:scale-[1.02]"
           >
-            <Stars />
+            <Stars rating={t.rating} />
             <div className="mt-2 font-semibold text-black">{t.title}</div>
             <p className="mt-2 text-sm text-slate-700">{t.text}</p>
+            <div className="mt-3 text-xs font-semibold text-slate-500">— {t.name}</div>
           </div>
         ))}
       </div>
